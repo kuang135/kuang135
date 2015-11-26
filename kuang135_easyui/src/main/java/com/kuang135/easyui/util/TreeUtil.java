@@ -3,23 +3,23 @@ package com.kuang135.easyui.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kuang135.easyui.bean.TreeGrid;
+import com.kuang135.easyui.bean.Tree;
 
 
 
-public class TreeGridUtil {
+public class TreeUtil {
 
 	/**
-	 * 将所有没有层级关系的TreeGrid 组织成有层级关系的TreeGrid
+	 * 将所有没有层级关系的Tree 组织成有层级关系的Tree
 	 * @param beans
 	 * @param topPid
 	 * @return
 	 */
-	public static List<TreeGrid> recurse2tree(List<TreeGrid> beans, String topPid) {
-		ArrayList<TreeGrid> list = new ArrayList<TreeGrid>();
+	public static List<Tree> recurse2tree(List<Tree> beans, String topPid) {
+		ArrayList<Tree> list = new ArrayList<Tree>();
 		if (beans == null || beans.size() == 0)
 			return list;
-		for (TreeGrid bean : beans) {
+		for (Tree bean : beans) {
 			if (topPid == null) {
 				if (bean.getPid() == null){
 					list.add(bean);
@@ -31,16 +31,16 @@ public class TreeGridUtil {
 			}
 		}
 		beans.removeAll(list);
-		for (TreeGrid topBean : list) {
+		for (Tree topBean : list) {
 			setChildren2ParentBean(beans, topBean);
 		}
 		return list;
 	}
-	private static void setChildren2ParentBean(List<TreeGrid> beans, TreeGrid parent) {
+	private static void setChildren2ParentBean(List<Tree> beans, Tree parent) {
 		if (beans == null || beans.size() == 0 || parent == null)
 			return;
-		List<TreeGrid> tmp = new ArrayList<TreeGrid>();
-		for (TreeGrid bean : beans) {
+		List<Tree> tmp = new ArrayList<Tree>();
+		for (Tree bean : beans) {
 			if ((parent.getId()).equals(bean.getPid())) {
 				tmp.add(bean);
 			}
@@ -48,7 +48,7 @@ public class TreeGridUtil {
 		beans.removeAll(tmp);
 		parent.setChildren(tmp);
 		if (tmp.size()>0) {
-			for (TreeGrid p : tmp) {
+			for (Tree p : tmp) {
 				setChildren2ParentBean(beans, p);
 			}
 		}
