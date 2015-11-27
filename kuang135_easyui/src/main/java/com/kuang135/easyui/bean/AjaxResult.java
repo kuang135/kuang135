@@ -1,7 +1,7 @@
 package com.kuang135.easyui.bean;
 
 /*
- * 用于ajax提交后返回数据的封装fff
+ * 用于ajax提交后返回数据的封装
  */
 public class AjaxResult {
 
