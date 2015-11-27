@@ -5,7 +5,7 @@ package com.kuang135.util;
 public class StringUtil {
 
 	/**
-	 * 在字符串的指定位置插入某个字符标记ff
+	 * 在字符串的指定位置插入某个字符标记
 	 * @param target
 	 * @param tag
 	 * @param distance
